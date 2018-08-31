@@ -10,6 +10,13 @@ object pepita {
 	method come(comida) {
 		energia = energia + comida.energia()
 	}
+	method teEncontro(alguien){
+		if(alguien.comida() != null){
+			self.come(alguien.comida())
+			alguien.aparecerComida()
+		}
+		 
+	} 
 	
 	method volaHacia(unaCiudad) {
 		if (ciudad != unaCiudad) {
