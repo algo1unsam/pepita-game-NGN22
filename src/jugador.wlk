@@ -5,19 +5,24 @@ object jugador {
 	var property posicion = game.at(7,7)
 	var property comida = null
 	
-	method soltarComida(){
-		if(comida!=null){
+	
+	//inicial: tenia comida en la mano
+	//post: suelta la comida en un lugar del tablero
+	method soltarComida()
+	{
+		if(comida!=null)
+		{
 		game.addVisualIn(comida, game.at(0,1))
 		}
-		}
-	method encontreAlgo(comidaAgarrada)
-	{
-		comida = comidaAgarrada
-		self.soltarComida()
-	} 
+	}
+		
 	
-	method aparecerComida(){
-		game.addVisualIn(comida, game.at(0,0.randomUpTo (10)))
+	
+	//inicial le dio a alguien el contenido anterior
+	//post comida = vacio
+	method noTenesMasComida()
+	{
+		comida.aparecer()
 		comida = null
 		
 	}
