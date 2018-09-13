@@ -35,6 +35,10 @@ program PepitaGame {
 	})
 	
 	
+	// TODO cuando lo ejecuto, agrega algunas comidas en loop, como que se queda agregando un montón
+	// a vos también te pasa?
+	// me parece que el problema está cuando roque levanta la comida
+	// Tampoco anda el volar de pepita, no cambia de posición
 	
 		
 //	START

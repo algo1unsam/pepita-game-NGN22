@@ -18,6 +18,9 @@ object manzana {
 		{
 			self.soyLaNuevaComida(alguien)
 		}
+		// TODO acá falta reemplazar la comida que está, por la que se encontró
+		// me parece que self.soyLaNuevaComida(alguien) hay que llamarlo siempre
+		// lo único que cambia es que si había algo hay que agregarlo de nuevo la tablero
 		else self.aparecer()
 		
 	}

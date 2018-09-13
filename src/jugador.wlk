@@ -8,6 +8,8 @@ object jugador {
 	
 	//inicial: tenia comida en la mano
 	//post: suelta la comida en un lugar del tablero
+	// TODO esto me parece que está bien pero no veo desde donde
+	// se llama a este mensaje
 	method soltarComida()
 	{
 		if(comida!=null)

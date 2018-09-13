@@ -11,6 +11,7 @@ object pepita {
 	method come(comida)
 	{
 		energia = energia + comida.energia()
+		// TODO si tenes implementado imagen() no hace falta llamar a este método
 		self.cambiarImagen()
 	}
 	
@@ -45,7 +46,7 @@ object pepita {
 		{
 			self.calcularMovimiento(unaCiudad)
 		}
-			
+		// TODO acá (en el else) me parece que es donde debería decir "ya estoy acá"
 	}
 	
 	//post si le alcanza energia se mueve, desciende la energia
@@ -64,6 +65,8 @@ object pepita {
 	method noMeMovi()
 	{
 		game.say(self , "no tengo energia, primero dame de comer" )
+		// TODO se supone igual que acá no cambió la energía, así que de todas maneras
+		// no debería cambiar imagen
 		self.cambiarImagen()
 	}
 	
@@ -106,6 +109,7 @@ object pepita {
 		return energia >= 100
 	}
 	
+	// TODO fijate que haciendo todo en imagen() por ahi te queda mas corto 
 	method cambiarImagen()
 	{
 		if(self.estasCansada())
