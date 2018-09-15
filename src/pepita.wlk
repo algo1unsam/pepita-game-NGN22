@@ -6,12 +6,14 @@ object pepita {
 
 	var property posicion = game.at(3,3)
 	
-	var property imagen = "pepita1.png"
+	var imagen = "pepita1.png"
 
 	method come(comida)
 	{
 		energia = energia + comida.energia()
-		// TODO si tenes implementado imagen() no hace falta llamar a este método
+		/*cambio la imagen con el metodo por que interprete que se hacia 
+		 * automaticamente al variar la energia
+		 */
 		self.cambiarImagen()
 	}
 	
@@ -46,7 +48,8 @@ object pepita {
 		{
 			self.calcularMovimiento(unaCiudad)
 		}
-		// TODO acá (en el else) me parece que es donde debería decir "ya estoy acá"
+		else self.deciDondeEstas()
+		/* correccion se agrego cartel para que se sepa que ya esta en esa ciudad*/
 	}
 	
 	//post si le alcanza energia se mueve, desciende la energia
@@ -54,47 +57,75 @@ object pepita {
 	{
 		if(self.meAlcanzaLaEnergia(unaCiudad.posicion()))
 		{
-			energia = self.nuevaEnergia(unaCiudad.posicion())			
+			energia = self.nuevaEnergia(unaCiudad.posicion())
+			self.cambiarImagen()			
 			self.meMovi(unaCiudad) 
 		}
 		else self.noMeMovi()
 	}
+	
+	
+	
 	
 	// inicial la trataron de mover
 	// post: anuncia que no tenia energia para vomerse
 	method noMeMovi()
 	{
 		game.say(self , "no tengo energia, primero dame de comer" )
-		// TODO se supone igual que acá no cambió la energía, así que de todas maneras
-		// no debería cambiar imagen
-		self.cambiarImagen()
+		/*corerecion se elimino comprobacion  */
 	}
+	
+	
+	
 	
 	//post tenia energia cambia ciudad y posicion
 	method meMovi(unaCiudad)
 	{
 		ciudad = unaCiudad
-		self.nuevaPosicion(unaCiudad.posicion())
+		self.nuevaPosicion( unaCiudad.posicion() )
+		self.queCiudadEs()
 	}
+	
+	
+	
+	/*correcion se agrega metodo para que pepita se "mueva hacia la ciudad " */
+	method queCiudadEs()
+	
+	{	
+		game.removeVisual( self )
+		if(ciudad == buenosAires)
+		{
+			game.addVisualIn( self, game.at(0,0)  )
+		}
+		else 
+		game.addVisualIn( self, game.at(7,2)  )
+	}
+	
+	
+	
+	
+	
+	
+	
 	//
 	//post: si tiene energia se mueve 
-	method meAlcanzaLaEnergia(nuevaPosicion)
+	method meAlcanzaLaEnergia( nuevaPosicion )
 	{
-		return self.nuevaEnergia(nuevaPosicion) > 10		
+		return self.nuevaEnergia( nuevaPosicion ) > 10		
 	}
 	
 	//post: nuevo valor de energia luego de volar a una distancia
 	method nuevaEnergia(nuevaPosicion) 
 	{	
-		return energia - self.energiaParaVolar(posicion.distance(nuevaPosicion))
+		return energia - self.energiaParaVolar( posicion.distance(nuevaPosicion) )
 	}
 	
 	method energiaParaVolar(distancia) = 15 + 5 * distancia
 	
 	//post cambia la posicion y anuncia
-	method nuevaPosicion(nuevaPosicion)
+	method nuevaPosicion( nuevaPosicion )
 	{	
-		self.posicion(nuevaPosicion)		
+		self.posicion( nuevaPosicion )		
 		
 		self.deciDondeEstas()
 	}
