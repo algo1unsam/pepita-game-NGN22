@@ -87,13 +87,16 @@ object pepita {
 	}
 	
 	
-	
+	method estasEnBuenosAires()
+	{
+		return ciudad.nombre() == "Buenos Aires"
+	}
 	/*correcion se agrega metodo para que pepita se "mueva hacia la ciudad " */
 	method queCiudadEs()
 	
 	{	
 		game.removeVisual( self )
-		if(ciudad == buenosAires)
+		if(self.estasEnBuenosAires())
 		{
 			game.addVisualIn( self, game.at(0,0)  )
 		}
